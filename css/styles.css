@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    display: flex;
+}
+
+.appTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.addTask {
+    display: flex;
+    padding-top: 5px;
+    height: 20%;
+    width: 100%;
+    
+}
+
+#newEntry {
+    padding: 5px;
+    height: 70%;
+    background-color: beige;
+    border: 1px;
+    border-style: solid;
+    border-radius: 7px;
+}
+
+button {
+    padding: 3px;
+    margin-left: 10px;
+    width: 60px;
+    height: 100%;
+    font-size: 75%;
+    border: 1px;
+    border-radius: 7px;
+    background-color: gray;
+    cursor: pointer;
+    transition: transform .1s;
+}
+
+button:hover {
+    background-color: aqua;
+    transform: scale(1.2);
+}
+
+.tasks {
+    margin-top: 25px;
+    height: 80%;
+}
+
+.scroll {
+    overflow-y: scroll;
+}
+
+.listItem{
+    margin: 5px;
+}
+
+.listItem:checked + label {
+    color: darkgray;
+    text-decoration: line-through;
+}
+
+ul li {
+    position: relative;
+}
+
+ul li:hover {
+    background-color: aquamarine;
+}
+
+ul li.checked {
+    color: darkgray;
+    text-decoration: line-through;
+}

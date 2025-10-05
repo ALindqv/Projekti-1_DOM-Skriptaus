@@ -10,6 +10,7 @@ Vaatimukset sovellukselle:
 - Listasta tulee olla mahdollisuus poistaa elementtejä sekä merkitä tehtävä hoidetuksi
 - Sovelluksen CSS- ja JavaScript-koodi tulee olla määritelty ulkoisessa tiedostossa (.css ja .js)
 - Listan tiedot tallennetaan selaimeen, esim. localstorageen (jos ehditty käydä yhdessä läpi)
+
 Lisätoimintoja:
 
 - Voit käyttää myös alasvetovalikoita ja valintalaatikoita
