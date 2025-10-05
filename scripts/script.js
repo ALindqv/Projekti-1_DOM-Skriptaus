@@ -1,26 +1,41 @@
-var inputField = document.getElementById('newEntry');
-var ul = document.querySelector('#taskList-cont');
+const inputField = document.getElementById('newEntry');
+const ul = document.querySelector('#taskList-cont');
 
 //Adding new task to the list
 let addNew = () => {
-    // Create checkbox item
-    var taskListItem = document.createElement('input');
-    taskListItem.type = 'checkbox'; // Set list item as checkbox
-    taskListItem.className = 'listItem'; // Set list item class
-    taskListItem.id = 'item6'; // Set list item id
+        let taskText = inputField.value.trim()
+        if (taskText.length < 3) {
+            inputField.style.borderColor = 'red';
+            alert('Entries must be at least three characters');
+        } else {
+        let idIncrement = 1;
+        let id = `item-${idIncrement++}`; // id format with incrementing numbers
 
-    // Create label for checkbox
-    var taskListLabel = document.createElement('label');
-    taskListLabel.htmlFor = "id";
-    taskListLabel.appendChild(document.createTextNode(inputField.value));
+        let taskLi = document.createElement('li'); // Create li element to store checkbox and label
 
-    // Line break after checkbox
-    var taskListBr = document.createElement('br');
+        // Create checkbox item
+        let taskListItem = document.createElement('input');
+        taskListItem.type = 'checkbox'; // Set list item as checkbox
+        taskListItem.className = 'listItem'; // Set list item class
+        taskListItem.id = id; // Set list item id
 
-    // Assign new unique id for each list item
-    ul.appendChild(taskListItem);
-    ul.appendChild(taskListLabel);
-    ul.appendChild(taskListBr);
+        // Create label for checkbox
+        let taskListLabel = document.createElement('label');
+        taskListLabel.htmlFor = id;
+        taskListLabel.textContent = taskText;
+        
 
-    inputField.value = ""; // Reset input field after list item addition
+        // Line break after checkbox
+        let taskListBr = document.createElement('br');
+
+        // Assign new unique id for each list item
+        taskLi.appendChild(taskListItem);
+        taskLi.appendChild(taskListLabel);
+        taskLi.appendChild(taskListBr);
+
+        ul.appendChild(taskLi)
+
+        inputField.value = ""; // Reset input field after list item addition
+        inputField.style.border = 'none';
+        }
 };
