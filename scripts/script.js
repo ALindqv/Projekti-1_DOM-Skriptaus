@@ -39,3 +39,5 @@ let addNew = () => {
         inputField.style.border = 'none';
         }
 };
+
+document.querySelector("#addBtn").addEventListener("click",addNew);
