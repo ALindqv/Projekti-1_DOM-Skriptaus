@@ -1,4 +1,4 @@
-* {
+body {
     background-color: #fafafa;
 }
 
@@ -14,12 +14,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
 }
 
 .title {
     margin: 0;
     display: flex;
+    justify-content: center;
 }
 
 .appTitle {
@@ -30,17 +30,15 @@
 .addTask {
     display: flex;
     padding-top: 5px;
-    height: 2em;
-    width: 100%;
+    
     
 }
 
 #newEntry {
-    padding: 5px;
-    height: 100%;
-    background-color: beige;
+    padding: 4px;
+    background-color: rgb(211, 211, 211);
+    border-style: none;
     border: 1px;
-    border-style: solid;
     border-radius: 7px;
 }
 
@@ -52,7 +50,7 @@
     font-size: 75%;
     border: 1px;
     border-radius: 7px;
-    background-color: gray;
+    background-color: rgb(89, 182, 12);
     cursor: pointer;
     transition: transform .1s;
 }
@@ -63,6 +61,29 @@
 }
 
 #addBtn:active {
+    background-color: pink;
+    transform: translateY(2px)
+}
+
+#retrieveBtn {
+    padding: 3px;
+    margin-left: 10px;
+    width: 60px;
+    height: 100%;
+    font-size: 75%;
+    border: 1px;
+    border-radius: 7px;
+    background-color: blueviolet;
+    cursor: pointer;
+    transition: transform .1s;
+}
+
+#retrieveBtn:hover {
+    background-color: greenyellow;
+    transform: scale(1.1);
+}
+
+#retrieveBtn:active {
     background-color: pink;
     transform: translateY(2px)
 }
