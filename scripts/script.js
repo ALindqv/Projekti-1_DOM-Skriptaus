@@ -1,51 +1,56 @@
 const inputField = document.getElementById('newEntry');
 const ul = document.querySelector('#taskList-cont');
+let idIncrement = 1;
 
 
-const createLi = () => {
-
+const incrementId = () => {
+    var id = `item-${idIncrement++}`; // id format with incrementing numbers
+    return id;
 }
+
 //Adding new task to the list
 let addNew = () => {
-        let taskText = inputField.value.trim()
-        if (taskText.length < 3 && taskText.length > 100) {
-            inputField.style.borderColor = 'red';
-            alert('Entries must be between 3 and 100 characters');
-        } else {
-        let idIncrement = 1;
-        let id = `item-${idIncrement++}`; // id format with incrementing numbers
+    let taskText = inputField.value.trim()
+    if (taskText.length < 3) {
+        //inputField.style.borderColor = 'red';
+        alert('Entry must be at least three characters');
+    } else {
+    id = incrementId();
+    // Create checkbox item
+    let taskListItem = document.createElement('input');
+    taskListItem.type = 'checkbox'; // Set list item as checkbox
+    taskListItem.className = 'listItem'; // Set list item class
+    
 
-        let taskLi = document.createElement('li'); // Create li element to store checkbox and label
+    // Create label for checkbox
+    let taskListLabel = document.createElement('label');
+    taskListLabel.htmlFor = id;
+    taskListLabel.textContent = taskText;
 
-        // Create checkbox item
-        let taskListItem = document.createElement('input');
-        taskListItem.type = 'checkbox'; // Set list item as checkbox
-        taskListItem.className = 'listItem'; // Set list item class
-        taskListItem.id = id; // Set list item id
+    let taskLi = document.createElement('li'); // Create li element to store checkbox and label
+    taskListItem.id = id; // Set input element id
+    taskLi.id = id; // Set li element id
 
-        // Create label for checkbox
-        let taskListLabel = document.createElement('label');
-        taskListLabel.htmlFor = id;
-        taskListLabel.textContent = taskText;
-        
+    // Append checkbox elements to the li element
+    taskLi.append(taskListItem, taskListLabel);
 
-        // Create line break after checkbox
-        let taskListBr = document.createElement('br');
+    ul.appendChild(taskLi) // Append li element to target ul element with the checkbox elements
 
-        // Append checkbox elements to the li element
-        taskLi.appendChild(taskListItem);
-        taskLi.appendChild(taskListLabel);
-        taskLi.appendChild(taskListBr);
-
-        ul.appendChild(taskLi) // Append li element with the checkbox elements
-
-        inputField.value = ""; // Reset input field after list item addition
-        inputField.style.border = 'none'; // Reset input field appeareance after prior invalid input
-        }
+    inputField.value = ""; // Reset input field after list item addition
+    //inputField.style.border = 'none'; // Reset input field appeareance after prior invalid input
+    }
 };
 
+// Removing task list elements
+const itemDel = () => {
+    var selected = document.querySelectorAll('.listItem:checked'); // Find checked checkbox items
+    //Delete cheked elements' parent li element
+    selected.forEach((element) => {
+        element.parentElement.remove();
+    })
+}
 
-
+/*
 const saveList = () => {
     let storedValues = []; // Store list items to array
     let liValues = document.querySelectorAll('.listItem');
@@ -63,8 +68,9 @@ const loadSaved = () => {
     console.log(savedValues)
     //ul.appendChild(savedValues);
 }
+*/
 
-document.querySelector("#addBtn").addEventListener("click",addNew);
-document.querySelector("#addBtn").addEventListener("click",saveList);
+// Listeners
+document.querySelector("#addBtn").addEventListener("click",addNew); // Addition
 
-document.querySelector("#retrieveBtn").addEventListener("click",loadSaved);
+document.querySelector("#delBtn").addEventListener("click",itemDel); // Deletion

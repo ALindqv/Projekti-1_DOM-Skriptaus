@@ -29,68 +29,69 @@ body {
 
 .addTask {
     display: flex;
-    padding-top: 5px;
-    
-    
 }
 
 #newEntry {
-    padding: 4px;
+    
+    height: 3em;
     background-color: rgb(211, 211, 211);
-    border-style: none;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 0px none;
+    border-right: 0px none;
+}
+
+#newEntry:focus {
+    outline: none;
+}
+
+button {
+    max-height: 100%;
+    padding: 3px;
+    margin-left: 0px;
+    width: 75px;
+    height: 100%;
+    font-size: 100%;
     border: 1px;
-    border-radius: 7px;
+    border-style: solid;
+    cursor: pointer;
+    transition: transform .1s;
 }
 
 #addBtn {
-    padding: 3px;
-    margin-left: 10px;
-    width: 60px;
-    height: 100%;
-    font-size: 75%;
-    border: 1px;
-    border-radius: 7px;
+    
+    border-radius: 0px 10px 0px 0px;
     background-color: rgb(89, 182, 12);
-    cursor: pointer;
-    transition: transform .1s;
+    
 }
 
 #addBtn:hover {
     background-color: aqua;
-    transform: scale(1.1);
 }
 
 #addBtn:active {
     background-color: pink;
-    transform: translateY(2px)
+    transform: translateX(1.5px)
 }
 
-#retrieveBtn {
-    padding: 3px;
-    margin-left: 10px;
-    width: 60px;
-    height: 100%;
-    font-size: 75%;
-    border: 1px;
-    border-radius: 7px;
-    background-color: blueviolet;
-    cursor: pointer;
-    transition: transform .1s;
+#delBtn {
+    
+    border-radius: 0px 0px 0px 10px;
+    background-color: rgb(248, 51, 51);
+    
 }
 
-#retrieveBtn:hover {
+#delBtn:hover {
     background-color: greenyellow;
-    transform: scale(1.1);
 }
 
-#retrieveBtn:active {
+#delBtn:active {
     background-color: pink;
-    transform: translateY(2px)
+    transform: translateX(1.5px)
 }
 
 .tasks {
-    margin-top: 25px;
-    height: 80%;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -100,8 +101,14 @@ body {
     text-overflow: ellipsis;
 }
 
-.listItem{
+.listItem {
     margin: 5px;
+}
+
+.listItem:checked {
+    transform: scale(1.2);
+    margin: 5px;
+    accent-color: aqua;
 }
 
 .listItem:checked + label {
