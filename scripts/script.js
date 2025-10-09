@@ -17,6 +17,7 @@ const createListItem = () => {
 
     // Create label for checkbox
     let checkboxLabel = document.createElement('label');
+    checkboxLabel.className = 'cbLabel';
     checkboxLabel.htmlFor = id;
     
     return {checkboxElem, checkboxLabel};
@@ -49,36 +50,60 @@ let itemAdd = () => {
 
 // Removing task list elements
 const itemDel = () => {
-    var selected = document.querySelectorAll('.listItem:checked'); // Find checked checkbox items
+    var selected = document.querySelectorAll('.listItem-checkbox:checked'); // Find checked checkbox items
     //Delete checked elements' parent li element
     selected.forEach((elem) => {
         elem.parentElement.remove();
     })
 }
 
-/*
-const saveList = () => {
-    let storedValues = []; // Store list items to array
-    let liValues = document.querySelectorAll('.listItem');
 
-    for (let i = 0; i < liValues.length; i++) {
-        storedValues.push(liValues[i].innerHTML);
+const saveToStorage = () => {
+    // li element attributes
+    let liElem = document.querySelectorAll('.listItem');
+    let liClass = liElem.getAttribute('class');
+    let liId = liElem.getAttribute('id')
+
+    // Checkbox element + label attributes
+    let cbElem = document.querySelectorAll('.listItem-checkbox');
+    let cbLabel = document.querySelectorAll('.cbLabel');
+    let cbType = cbElem.getAttribute('type');
+    let cbClass = cbElem.getAttribute('class');
+    let cbId = cbElem.getAttribute('id')
+
+    /*
+    const liElem={
+        liClass: 'listItem',
+        liId: id
     }
 
-    localStorage.setItem('liItems', JSON.stringify(storedValues));
+    const inputElem={
+        inputType: 'checkbox',
+        inputClass: 'listItem-checkbox',
+        inputId: id
+    }
+
+    const liElemJSON = JSON.stringify(liElem)
+    const inputElemJSON = JSON.stringify(inputElem)
+
+    localStorage.setItem('liElem',liElemJSON);
+    localStorage.setItem('inputElem',inputElemJSON);
+    */
 
 }
 
-const loadSaved = () => {
+const elementFromStorage = () => {
     const savedValues = JSON.parse(localStorage.getItem('storedValues'))
     console.log(savedValues)
-    //ul.appendChild(savedValues);
+    ul.appendChild(savedValues);
 }
-*/
+
 
 // Listeners
 document.querySelector("#addBtn").addEventListener("click",itemAdd); // Addition
 document.querySelector("#delBtn").addEventListener("click",itemDel); // Deletion
+document.querySelector("#storageSaveBtn").addEventListener("click",saveToStorage);
+//document.querySelector("#delBtn").addEventListener("click",loadSaved);
 
 // Event listener for adding items using enter key
 inputField.addEventListener('keypress',function(e) {
