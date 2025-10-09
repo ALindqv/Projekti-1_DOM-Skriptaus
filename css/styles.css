@@ -9,9 +9,7 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
+    padding-top: 5px;
 }
 
 .app {
@@ -37,6 +35,7 @@ body {
 
 #newEntry {
     height: 3em;
+    padding-left: 5px;
     background-color: rgb(211, 211, 211);
     border-top: 1px solid;
     border-bottom: 1px solid;
@@ -48,13 +47,13 @@ body {
     outline: none;
 }
 
-button {
+.taskBtn {
     max-height: 100%;
     padding: 3px;
     margin-left: 0px;
     width: 75px;
     height: 100%;
-    font-size: 100%;
+    font-size: 15px;
     border: 1px;
     border-style: solid;
     cursor: pointer;
@@ -63,7 +62,7 @@ button {
 
 #addBtn {
     border-radius: 0px var(--button-corner-radius) 0px 0px;
-    background-color: rgb(89, 182, 12);
+    background-color: rgb(40, 211, 77);
     
 }
 
@@ -80,7 +79,6 @@ button {
     
     border-radius: 0px 0px 0px var(--button-corner-radius);
     background-color: rgb(255, 87, 87);
-    
 }
 
 #delBtn:hover {
@@ -99,21 +97,22 @@ button {
 }
 
 .scroll {
-    
     text-overflow: ellipsis;
 }
 
-.listItem {
-    margin: 5px;
+.listItem-checkbox {
+    margin: 10px;
+    width: 15px;
+    height: 15px;
 }
 
-.listItem:checked {
+.listItem-checkbox:checked {
     transform: scale(1.2);
     margin: 5px;
-    accent-color: aqua;
+    accent-color: rgb(40, 211, 77);
 }
 
-.listItem:checked + label {
+.listItem-checkbox:checked + label {
     color: gray;
     text-decoration: line-through;
 }
