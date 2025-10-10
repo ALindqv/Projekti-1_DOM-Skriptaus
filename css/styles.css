@@ -1,5 +1,6 @@
 :root {
-    --button-corner-radius: 18px;
+    --input-button-corner-radius: 18px;
+    --storageButtonCornerRadius: 55px;
 }
 
 body {
@@ -36,7 +37,8 @@ body {
 
 #newEntry {
     height: 3em;
-    padding-left: 5px;
+    width: 175px;
+    padding-left: 3px;
     background-color: rgb(211, 211, 211);
     border-top: 1px solid;
     border-bottom: 1px solid;
@@ -62,7 +64,7 @@ body {
 }
 
 #addBtn {
-    border-radius: 0px var(--button-corner-radius) 0px 0px;
+    border-radius: 0px var(--input-button-corner-radius) 0px 0px;
     background-color: rgb(40, 211, 77);
     
 }
@@ -78,7 +80,7 @@ body {
 
 #delBtn {
     
-    border-radius: 0px 0px 0px var(--button-corner-radius);
+    border-radius: 0px 0px 0px var(--input-button-corner-radius);
     background-color: rgb(255, 87, 87);
 }
 
@@ -92,8 +94,15 @@ body {
 }
 
 .storageBtn {
-    width: 175px;
+    width: 182px;
     align-self: center;
+    font-size: 15px;
+    border-radius: 0px 0px var(--storageButtonCornerRadius) var(--storageButtonCornerRadius);
+    border-top: 0px none;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    background-color: blueviolet;
 }
 
 .tasks {
