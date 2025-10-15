@@ -112,7 +112,11 @@ body {
 }
 
 .scroll {
+    padding: 5px;
     text-overflow: ellipsis;
+    background-color: rgb(180, 180, 180);
+    border: 1px;
+    border-radius: 25px;
 }
 
 .listItem-checkbox {

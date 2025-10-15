@@ -30,35 +30,30 @@ const saveToStorage = (taskData) => {
 
 
 let createTask = () => {
-    // Create checkbox element
-    let checkboxElem = document.createElement('input');
-    checkboxElem.type = cbInputType; // Set list item as checkbox
-    checkboxElem.className = cbClass; // Different checkbox class name for easier styling
-    checkboxElem.id = incrementId(); // Set input element id
-
-    // Create label for checkbox element
-    let checkboxLabel = document.createElement('label');
-    checkboxLabel.textContent = inputField.value;
-    checkboxLabel.htmlFor = checkboxElem.id;
-    
-    const taskLi = document.createElement('li'); // Create li element to store checkbox and label
-    taskLi.className = liClass // Task element main class name
-    
-    taskLi.append(checkboxElem, checkboxLabel); // Append checkbox and label to the li element as child elements
-
-    ul.appendChild(task) // Append li element to target ul element with the checkbox elements
-}
-
-const renderFromStorage = () => {
     ul.innerHTML = '';
-    const taskData = loadFromStorage();
+    let taskData = loadFromStorage();
+    //console.log(taskData.id)
     for (let i = 0; i < taskData.length; i++) {
-        createTask();
+        // Create checkbox element
+        let checkboxElem = document.createElement('input');
+        checkboxElem.type = cbInputType; // Set list item as checkbox
+        checkboxElem.className = cbClass; // Different checkbox class name for easier styling
+        checkboxElem.id = taskData[i].id; // Set input element id
+
+        // Create label for checkbox element
+        let checkboxLabel = document.createElement('label');
+        checkboxLabel.textContent = taskData[i].label;
+        checkboxLabel.htmlFor = checkboxElem.id;
+
+        const taskLi = document.createElement('li'); // Create li element to store checkbox and label
+        taskLi.className = liClass // Task element main class name
+
+        taskLi.append(checkboxElem, checkboxLabel); // Append checkbox and label to the li element as child elements
+
+        ul.appendChild(taskLi) // Append li element to target ul element with the checkbox elements
+
     }
 }
-
-
-
 
 // Removing tasks from the list
 
@@ -68,6 +63,7 @@ const delSelected = () => {
     //Delete checked elements' parent li element
     selected.forEach((elem) => {
         elem.parentElement.remove();
+        
     })
 }
 
@@ -82,26 +78,33 @@ const clearList = () => {
     taskArray = [];
 }
 
-// Listeners
-form.addEventListener('submit', e => {
-    e.preventDefault();
+// Submitting tasks as a function for reuse purposes
+let taskSubmit = () => {
+    
 
     const label = inputField.value;
     const id = incrementId()
 
     const tasks = loadFromStorage();
+    
     tasks.push({id, label});
     saveToStorage(tasks);
-    form.reset()
+    createTask();
+    form.reset();
+}
+
+// Listeners
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    taskSubmit();
 })
     
 // Event listener for adding items using enter key
     
 form.addEventListener('keydown', e => {
 if (e.key === "Enter") {
-    e.preventDefault(); // Disable key default functionality
-    createTask();
-    form.reset();
+    e.preventDefault();
+    taskSubmit();
     }
     
 });
@@ -111,11 +114,7 @@ document.querySelector("#delBtn").addEventListener("click",delSelected); // Dele
 document.querySelector("#clearBtn").addEventListener("click",clearList);
 
 // Load storage on page load
+
 window.onload = function () {
-    const taskData = loadFromStorage();
-    /*
-    for (let i = 0; i < taskData.length; i++) {
-        insertToTasks(taskData[i].label)
-    }
-    */
+    createTask();
 }
