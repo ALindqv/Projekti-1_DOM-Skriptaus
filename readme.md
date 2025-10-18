@@ -1,4 +1,23 @@
-Vaatimukset sovellukselle:
+
+# To-Do Lista
+Web-sovellus yksinkertaisen tehtävälistan tekemiseen.
+
+## Ominaisuudet
+Sovelluksella käyttäjä voi lisätä tehtäviä listaan joko painamalla erillistä nappia tai enteriä. Listalla olevat tehtävät voi merkitä tehdyksi valintalaatikoita klikkaamalla. 
+
+Sovellus tarkistaa käyttäjän syötteen ennen lisäystä (Täytyy olla vähintään kolme merkkiä)
+
+Tehtävät tallennetaan localstorageen ja sovellus lataa ne automaattisesti käynnistäessä.
+
+Tehtäviä voi poistaa listasta joko tyhjentämällä koko listan tai painamalla nappia, joka poistaa vain valitut tehtävät.
+
+## Sovelluksessa käytetään:
+- Javascript (DOM)
+- CSS
+- HTML
+
+
+## Vaatimukset sovellukselle:
 
 - Vain "natiivi" JavaScriptiä, ei käytetä ulkoisia kirjastoja  (JQuery tms.)
 - Sovelluksessa on käytetty DOM skriptausta ja lomakkeita 
@@ -19,3 +38,4 @@ Lisätoimintoja:
 - Voit halutessasi käyttää myös HTML5:n drag&drop toiminnallisuutta listassa
 - Voit toteuttaa (kuvassakin alareunassa näkyvät) napit, joilla näkyviin saa vain aktiiviset tai tehdyt tehtävät
 - Voit myös käyttää esim. Bootstrapia ulkoasun muokkaamiseen
+
