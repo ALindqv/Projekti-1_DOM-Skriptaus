@@ -1,8 +1,11 @@
-const STORAGE_KEY = 'task'
+// Localstorage keys as variables for easy use
+const STORAGE_KEY = 'task' // Main task storage key
+const idCounter = 'cbIdCounter' // Saving checkbox id counter to storage
+
 
 // Static attributes for input
-const cbInputType = 'checkbox';
-const cbClass = 'listItem-checkbox';
+const checkboxInput = 'checkbox'; // Set list item as checkbox
+const cbClass = 'listItem-checkbox'; 
 const liClass = 'listItem';
 
 // DOM Elements
@@ -16,13 +19,6 @@ const addbtn = document.querySelector('addbtn');
 const delBtn = document.querySelector("#delBtn");
 const clearBtn = document.querySelector('#clearBtn');
 
-let idIncrement = 1;
-
-const incrementId = () => {
-    let id = `task${idIncrement++}`; // Unique id for li elements
-    return id;
-}
-
 //Load localstorage items
 const loadFromStorage = () => {
     let taskArray = localStorage.getItem(STORAGE_KEY); 
@@ -34,6 +30,13 @@ const saveToStorage = (taskData) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(taskData));
 }
 
+const incrementId = () => {
+    // Getting id number from localstorage, set to 0 if empty
+    const taskIdNumber = parseInt(localStorage.getItem(idCounter) || '0', 10); // Parsing string from localstorage as int
+    let id = `task${taskIdNumber}`; // ID template with incrememnting number
+    localStorage.setItem(idCounter, String(taskIdNumber + 1)) // Save id counter key and increment value in localstorage
+    return id;
+}
 
 
 let renderTasks = () => {
@@ -42,8 +45,8 @@ let renderTasks = () => {
     for (let i = 0; i < taskData.length; i++) {
         // Create checkbox element
         let checkboxElem = document.createElement('input');
-        checkboxElem.type = cbInputType; // Set list item as checkbox
-        checkboxElem.className = cbClass; // Different checkbox class name for easier styling
+        checkboxElem.type = checkboxInput; // 
+        checkboxElem.className = cbClass; // Checkbox class for easier styling
         checkboxElem.id = taskData[i].id; // Set input element id
 
         // Create label for checkbox element
@@ -56,27 +59,31 @@ let renderTasks = () => {
 
         taskLi.append(checkboxElem, checkboxLabel); // Append checkbox and label to the li element as child elements
 
-        ul.appendChild(taskLi) // Append li element to target ul element with the checkbox elements
+        ul.appendChild(taskLi)
     }
 }
 
 // Removing tasks from the list
 
 // Removing selected task list elements
+
 const delSelected = () => {
     taskData = loadFromStorage();
+    toRemove = []
     const selected = document.querySelectorAll('.listItem-checkbox:checked'); // Find checked checkbox items
-    let index = taskData.indexOf(selected) +1
-    console.log(index)
+    
+    let id = selected.id
 
-    //Delete checked elements' parent li element
-    selected.forEach((elem) => {
-        taskData.splice(index, selected.length)
-        elem.parentElement.remove();
-    })
+    toRemove.push(id)
+    console.log(selected)
+    /*
+    for (let i = taskData.length -1; i >= 0; i--) {
+        taskData.splice(i, 1);
+    }   
     saveToStorage(taskData);
     renderTasks();
-}
+    */
+} 
 
 // Clear the entire list
 const clearList = () => {
