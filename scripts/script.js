@@ -8,7 +8,11 @@ const liClass = 'listItem';
 // DOM Elements
 const inputField = document.querySelector('#newEntry');
 const ul = document.querySelector('#taskList-cont');
-const form = document.querySelector('#taskSubmit')
+const form = document.querySelector('.taskSubmit');
+const errorMsg = document.querySelector('#error')
+
+const delBtn = document.querySelector("#delBtn");
+const clearBtn = document.querySelector('#clearBtn');
 let idIncrement = 1;
 
 const incrementId = () => {
@@ -31,8 +35,7 @@ const saveToStorage = (taskData) => {
 
 let createTask = () => {
     ul.innerHTML = '';
-    let taskData = loadFromStorage();
-    //console.log(taskData.id)
+    let taskData = loadFromStorage(); // Checkbox id and label text from localstorage
     for (let i = 0; i < taskData.length; i++) {
         // Create checkbox element
         let checkboxElem = document.createElement('input');
@@ -51,7 +54,6 @@ let createTask = () => {
         taskLi.append(checkboxElem, checkboxLabel); // Append checkbox and label to the li element as child elements
 
         ul.appendChild(taskLi) // Append li element to target ul element with the checkbox elements
-
     }
 }
 
@@ -59,12 +61,18 @@ let createTask = () => {
 
 // Removing selected task list elements
 const delSelected = () => {
-    let selected = document.querySelectorAll('.listItem-checkbox:checked'); // Find checked checkbox items
+    taskData = loadFromStorage();
+    const selected = document.querySelectorAll('.listItem-checkbox:checked'); // Find checked checkbox items
+    let index = taskData.indexOf(selected) +1
+    console.log(index)
+
     //Delete checked elements' parent li element
     selected.forEach((elem) => {
+        taskData.splice(index, selected.length)
         elem.parentElement.remove();
-        
     })
+    saveToStorage(taskData);
+    createTask();
 }
 
 // Clear the entire list
@@ -81,40 +89,61 @@ const clearList = () => {
 // Submitting tasks as a function for reuse purposes
 let taskSubmit = () => {
     
-
     const label = inputField.value;
-    const id = incrementId()
+    const id = incrementId() // Getting checkbox id value from a simple counter
 
     const tasks = loadFromStorage();
     
     tasks.push({id, label});
     saveToStorage(tasks);
     createTask();
+
     form.reset();
 }
 
+const inputValidation = (e) => {
+    inputField.style.border = '';
+    inputField.setCustomValidity('');
+
+    const valueToValidate = inputField.value.trim();
+    let valid = true;
+
+    if (valueToValidate.length < 3) {
+        inputField.style.border = '1px solid red';
+        inputField.setCustomValidity('Input cannot be less than three characters');
+        valid = false;
+    }
+
+    if (!valid) {
+        e.preventDefault();
+        inputField.reportValidity();
+    } else {
+        taskSubmit();
+    }
+    
+}   
+
 // Listeners
+
+// Event listener for the submit button
 form.addEventListener('submit', e => {
     e.preventDefault();
-    taskSubmit();
-})
+    inputValidation(e)
+});
     
-// Event listener for adding items using enter key
-    
+// Submitting items with the enter key
 form.addEventListener('keydown', e => {
 if (e.key === "Enter") {
     e.preventDefault();
-    taskSubmit();
+    inputValidation(e)
     }
-    
 });
-//document.querySelector("#addBtn").addEventListener("click",saveToStorage); // Addition
-//document.querySelector("#addBtn").addEventListener("click",saveToStorage);
-document.querySelector("#delBtn").addEventListener("click",delSelected); // Deletion
-document.querySelector("#clearBtn").addEventListener("click",clearList);
+
+
+delBtn.addEventListener("click",delSelected); // Deletion
+clearBtn.addEventListener("click",clearList);
 
 // Load storage on page load
-
 window.onload = function () {
     createTask();
 }
