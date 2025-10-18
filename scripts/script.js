@@ -11,8 +11,11 @@ const ul = document.querySelector('#taskList-cont');
 const form = document.querySelector('.taskSubmit');
 const errorMsg = document.querySelector('#error')
 
+// Buttons
+const addbtn = document.querySelector('addbtn');
 const delBtn = document.querySelector("#delBtn");
 const clearBtn = document.querySelector('#clearBtn');
+
 let idIncrement = 1;
 
 const incrementId = () => {
@@ -33,7 +36,7 @@ const saveToStorage = (taskData) => {
 
 
 
-let createTask = () => {
+let renderTasks = () => {
     ul.innerHTML = '';
     let taskData = loadFromStorage(); // Checkbox id and label text from localstorage
     for (let i = 0; i < taskData.length; i++) {
@@ -72,7 +75,7 @@ const delSelected = () => {
         elem.parentElement.remove();
     })
     saveToStorage(taskData);
-    createTask();
+    renderTasks();
 }
 
 // Clear the entire list
@@ -92,58 +95,56 @@ let taskSubmit = () => {
     const label = inputField.value;
     const id = incrementId() // Getting checkbox id value from a simple counter
 
-    const tasks = loadFromStorage();
+    const tasks = loadFromStorage(); // Get task data array from localstorage
     
-    tasks.push({id, label});
-    saveToStorage(tasks);
-    createTask();
+    tasks.push({id, label}); // Populate the array with new data
+    saveToStorage(tasks); // Updated array to localstorage
+    renderTasks(); 
 
-    form.reset();
+    form.reset(); 
 }
 
-const inputValidation = (e) => {
+const inputValidation = () => {
     inputField.style.border = '';
     inputField.setCustomValidity('');
 
     const valueToValidate = inputField.value.trim();
-    let valid = true;
 
     if (valueToValidate.length < 3) {
         inputField.style.border = '1px solid red';
         inputField.setCustomValidity('Input cannot be less than three characters');
-        valid = false;
-    }
-
-    if (!valid) {
-        e.preventDefault();
         inputField.reportValidity();
-    } else {
-        taskSubmit();
+        return false; // Form submission not allowed
     }
-    
-}   
+    return true; // Form submission allowed
+}; 
 
 // Listeners
 
 // Event listener for the submit button
 form.addEventListener('submit', e => {
-    e.preventDefault();
-    inputValidation(e)
+    if (!inputValidation()) {
+        e.preventDefault(); // Prevent form submission if invalid
+    } else {
+        taskSubmit(); 
+    }
 });
     
 // Submitting items with the enter key
 form.addEventListener('keydown', e => {
-if (e.key === "Enter") {
-    e.preventDefault();
-    inputValidation(e)
+    if (e.key === "Enter") {
+        if (!inputValidation()) {
+            e.preventDefault()
+        } else {
+            taskSubmit();
+        }
     }
 });
 
-
 delBtn.addEventListener("click",delSelected); // Deletion
-clearBtn.addEventListener("click",clearList);
+clearBtn.addEventListener("click",clearList); // Clear list
 
 // Load storage on page load
-window.onload = function () {
-    createTask();
+window.onload = () => {
+    renderTasks();
 }

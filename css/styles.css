@@ -16,7 +16,7 @@ body {
 .app {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    width: 75%;
 }
 
 .title {
@@ -35,6 +35,7 @@ body {
 /* Task submission */
 .addTask {
     display: flex;
+    justify-content: center;
 }
 
 .taskSubmit {
@@ -115,7 +116,10 @@ body {
 /* Task list styles */
 
 .tasks {
+    display: flex;
+    justify-content: center;
     height: 100%;
+    
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -125,6 +129,7 @@ body {
     border: 1px;
     border-radius: 25px;
     background-color: rgb(205, 205, 205);
+    width: 80%;
 }
 
 .scroll:empty {
