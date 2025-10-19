@@ -19,12 +19,6 @@ body {
     width: 75%;
 }
 
-.title {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
 .appTitle {
     display: flex;
     justify-content: center;
@@ -86,17 +80,17 @@ body {
     transform: translateX(1.5px)
 }
 
-#delBtn {
+#clearBtn {
     
     border-radius: 0px 0px 0px var(--input-button-corner-radius);
     background-color: rgb(255, 87, 87);
 }
 
-#delBtn:hover {
+#clearBtn:hover {
     background-color: greenyellow;
 }
 
-#delBtn:active {
+#clearBtn:active {
     background-color: pink;
     transform: translateX(1.5px)
 }
@@ -142,7 +136,7 @@ ul {
 
 ul li {
     position: relative;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 ul li:hover {
@@ -155,6 +149,11 @@ ul li:hover {
 ul li label {
     vertical-align: middle;
     pointer-events: none;
+}
+
+.delBtn {
+    width: 10px;
+    height: 10px;
 }
 
 /* Checkbox styles */

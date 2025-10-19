@@ -66,24 +66,21 @@ let renderTasks = () => {
 // Removing tasks from the list
 
 // Removing selected task list elements
-
 const delSelected = () => {
     taskData = loadFromStorage();
-    toRemove = []
-    const selected = document.querySelectorAll('.listItem-checkbox:checked'); // Find checked checkbox items
     
-    let id = selected.id
-
-    toRemove.push(id)
-    console.log(selected)
+    const selected = document.querySelectorAll('.listItem-checkbox:checked').id; // Find checked checkbox items
+    
+    toRemove = new Set(selected);
     /*
-    for (let i = taskData.length -1; i >= 0; i--) {
-        taskData.splice(i, 1);
-    }   
-    saveToStorage(taskData);
-    renderTasks();
-    */
-} 
+    // Get the ids of selected elements
+    for (let i = 0; i < selected.length; i++) {
+        toRemove.push(selected[i].id, 1)
+    } */
+
+    remaining = taskData.filter(value => !toRemove.has(value));
+    console.log(remaining)
+}
 
 // Clear the entire list
 const clearList = () => {
@@ -140,6 +137,8 @@ form.addEventListener('submit', e => {
 // Submitting items with the enter key
 form.addEventListener('keydown', e => {
     if (e.key === "Enter") {
+        e.preventDefault();
+        console.log('pressed')
         if (!inputValidation()) {
             e.preventDefault()
         } else {

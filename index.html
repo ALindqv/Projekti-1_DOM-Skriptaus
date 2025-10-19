@@ -9,18 +9,15 @@
     <body>
         <div class="container">
             <div class="app">
-                <div class="title">
-                    <h1 class="appTitle">Task list</h1>
-                </div>
+                <h1 class="appTitle">Task list</h1>
                 <div class="addTask">
                     <form class="taskSubmit">
-                        <button class="taskBtn" id="delBtn">Remove Selected</button>
+                        <button class="taskBtn" id="clearBtn">Clear List</button>
                         <input type="text" id="newEntry" placeholder="Add new task"> 
-                        <button type="submit" class="taskBtn" id="addBtn">Add New</button><br>
+                        <button type="submit" class="taskBtn" id="addBtn">Add New</button>
                     </form>
                 </div>
-                <button class="storageBtn"id="clearBtn">Clear all tasks</button>
-                <div id="error"></div>
+                <button class="storageBtn" id="delBtn">Remove Selected</button>
                 <div class="tasks">
                     <ul id="taskList-cont" class="scroll"></ul>
                     <!-- Tasklist gets created here-->
