@@ -31,10 +31,10 @@ const saveToStorage = (taskData) => {
 }
 
 const incrementId = () => {
-    // Getting id number from localstorage, set to 0 if empty
-    const taskIdNumber = parseInt(localStorage.getItem(idCounter) || '0', 10); // Parsing string from localstorage as int
-    let id = `task${taskIdNumber}`; // ID template with incrememnting number
-    localStorage.setItem(idCounter, String(taskIdNumber + 1)) // Save id counter key and increment value in localstorage
+    // Getting id number from localstorage, set to 1 if empty
+    const idNumber = parseInt(localStorage.getItem(idCounter) || '1', 10); // Parsing string from localstorage as int
+    let id = `task${idNumber}`; // ID template with incrememnting number
+    localStorage.setItem(idCounter, String(idNumber + 1)) // Save id counter key and increment value in localstorage
     return id;
 }
 
@@ -67,19 +67,16 @@ let renderTasks = () => {
 
 // Removing selected task list elements
 const delSelected = () => {
-    taskData = loadFromStorage();
+    let taskData = loadFromStorage();
     
-    const selected = document.querySelectorAll('.listItem-checkbox:checked').id; // Find checked checkbox items
+    const selected = Array.from(document.querySelectorAll('.listItem-checkbox:checked'), checkbox => checkbox.id); // Find checked checkbox id values
     
-    toRemove = new Set(selected);
-    /*
-    // Get the ids of selected elements
-    for (let i = 0; i < selected.length; i++) {
-        toRemove.push(selected[i].id, 1)
-    } */
+    // Add the collected ids to a set
+    toRemove = new Set(selected); 
 
-    remaining = taskData.filter(value => !toRemove.has(value));
-    console.log(remaining)
+    remaining = taskData.filter(obj => !toRemove.has(obj.id)); // Filter objects from localstorage array using their id
+    saveToStorage(remaining);
+    renderTasks();
 }
 
 // Clear the entire list
@@ -138,7 +135,6 @@ form.addEventListener('submit', e => {
 form.addEventListener('keydown', e => {
     if (e.key === "Enter") {
         e.preventDefault();
-        console.log('pressed')
         if (!inputValidation()) {
             e.preventDefault()
         } else {
