@@ -1,41 +1,70 @@
 
-# To-Do Lista
-Web-sovellus yksinkertaisen tehtävälistan tekemiseen.
+# Projektin nimi ja tekijät
+Projekti on To-Do-Tehtävälista. Tekijä on Arttu Lindqvist.
 
-## Ominaisuudet
-Sovelluksella käyttäjä voi lisätä tehtäviä listaan joko painamalla erillistä nappia tai enteriä. Listalla olevat tehtävät voi merkitä tehdyksi valintalaatikoita klikkaamalla. 
+## Verkkolinkit:
+Pääset julkaistuun sovellukseen käsiksi osoitteessa [google.com](https://google.com)
+Linkki projektin videoesittelyyn [google.com](https://google.com)
 
-Sovellus tarkistaa käyttäjän syötteen ennen lisäystä (Täytyy olla vähintään kolme merkkiä)
+## Työn jakautuminen 
+Projektin tehnyt täysin Arttu Lindqvist.
 
-Tehtävät tallennetaan localstorageen ja sovellus lataa ne automaattisesti käynnistäessä.
+## Oma arvio työstä ja oman osaamisen kehittymisestä
+Mielestäni onnistuin käyttämään JavaScriptin ja CSS:n ominaisuuksia monipuolisesti ja sain toteutettua kaikki pakolliset vaatimukset.
+Parantamista olisi ohjelman suunnittelussa. Jouduin tekemään suuria muutoksia, koska en aluksi suunnitellut sovellusta kaikille sen ominaisuuksille.
+Sovelluksesta jäi puuttumaan...
+Koen, että olen oppinut käyttämään JavaScriptiä paremmin ja ymmärrän paremmin. Sain myös harjoitusta muuttujien ja funktioiden selkeään nimeämiseen, että koodiin ei tarvitse laittaa liian paljon kommentteja.
+Epäselväksi jäi...
+Antaisin itselleni pisteitä seuraavasti: xx/yy p
 
-Tehtäviä voi poistaa listasta joko tyhjentämällä koko listan tai painamalla nappia, joka poistaa vain valitut tehtävät.
-
-## Sovelluksessa käytetään:
-- Javascript (DOM)
-- CSS
-- HTML
+## Palaute opettajalle kurssista sekä itse opetuksesta tähän saakka
+Kurssi sekä lähiopetus ovat tuntuneet... 
+Oppimistani tukisi jos...
 
 
-## Vaatimukset sovellukselle:
+## Sisällysluettelo:
 
-- Vain "natiivi" JavaScriptiä, ei käytetä ulkoisia kirjastoja  (JQuery tms.)
-- Sovelluksessa on käytetty DOM skriptausta ja lomakkeita 
-- Sovelluksen lähdekoodi on julkaistu GitHubissa. Luo tätä varten uusi tyhjä repository. 
-- Sovellus on julkaistu Netlify palvelussa.  (HUOM. HTML-sivun nimen tulee olla index.html)
-- Kenttään syötetyt asiat kootaan nappia painamalla sivulla yhteen listaksi.  
-- Syöttökenttien sisältö tulee tarkistaa tyhjän sekä virheellisen (esim. liian lyhyen) sisällön varalta
-- Virheellinen sisältö syöttökentässä saa aikaan virheilmoituksen sekä virheellisen kentän korostuksen (esim. punainen reuna).
-- Listasta tulee olla mahdollisuus poistaa elementtejä sekä merkitä tehtävä hoidetuksi
-- Sovelluksen CSS- ja JavaScript-koodi tulee olla määritelty ulkoisessa tiedostossa (.css ja .js)
-- Listan tiedot tallennetaan selaimeen, esim. localstorageen (jos ehditty käydä yhdessä läpi)
+- [Tietoja sovelluksesta](#tietoja-sovelluksesta)
+- [Tunnetut virheet/bugit](#tunnetut-virheet/bugit)
+- [Kuvakaappaukset](#kuvakaappaukset)
+- [Teknologiat](#teknologiat)
+- [Asennus](#asennus)
+- [Lähestymistapa](#lähestymistapa)
+- [Kiitokset](#kiitokset)
+- [Lisenssi](#lisenssi)
 
-Lisätoimintoja:
+## Tietoja sovelluksesta
+[Projektin nimi] on sovellus, jossa käyttäjä voi luoda tehtävälistan. Listalta voi merkitä tehtäviä tehdyksi valintalaatikoiden avulla. Listalta poisto tapahtuu joko tyhjentämällä tai napista, joka poistaa kaikki valitut tehtävät. Sovellus käyttää localstoragea listan tallentamiseen ja lataa listan automaattisesti käynnistyessä. 
 
-- Voit käyttää myös alasvetovalikoita ja valintalaatikoita
-- Voit toteuttaa laskurin, joka osoittaa listalla auki olevien asioiden määrän
-- Yritä keksiä jokin mielekäs tapa piilottaa ja näyttää elementtejä sovelluksessa. 
-- Voit halutessasi käyttää myös HTML5:n drag&drop toiminnallisuutta listassa
-- Voit toteuttaa (kuvassakin alareunassa näkyvät) napit, joilla näkyviin saa vain aktiiviset tai tehdyt tehtävät
-- Voit myös käyttää esim. Bootstrapia ulkoasun muokkaamiseen
+## Tunnetut virheet/bugit
+Kerro jos tiedät sovelluksessa olevan jotain, mikä ei toimi tai toimii heikosti
 
+## Kuvakaappaukset
+Sovellus toiminnassa 
+`![Kirjoittaminen](https://unsplash.com/photos/VBPzRgd7gfc)`
+
+
+## Teknologiat
+Kuvaa, mitä teknologioita käytettiin ja mikä oli niiden rooli projektissasi.  
+Käytin seuraavia teknologioita: 
+- `html`
+- `css`
+- `JavaScript`
+
+## Asennus  
+- Lataa kaikki tiedostot tai kloonaa repositorio
+- Avaa index.html selaimessasi 
+ 
+
+## Kiitokset
+Lista lähteistä ja esimerkeistä, joita käytit projektin aikana. Mainitse myös, jos käytit ChatGPT:tä tai muita tekoälytyökaluja koodauksen aikana ja kerro, miten ne auttoivat sinua.
+
+Käytin projektissa CoPilot-tekoälysovellusta. Kysyin tekoälyltä ehdotuksia etsiessäni tapoja toteuttaa sovelluksen toimintoja ja kysyin selityksiä erilaisille JavaScriptin toiminnoille. Jos käytin koodissa tekoälyn antamia koodiehdotuksia, kysyin tarkentavia kysymyksiä siitä, mitä kyseinen koodi tekee.
+
+Muita lähteitä:
+- [W3Schools](https://www.w3schools.com)  
+
+## Lisenssi
+Valitse projektille lisenssi seuraamalla tätä [opasta](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository).
+
+Esimerkki: MIT-lisenssi @ [tekijä](author.com)
