@@ -2,7 +2,6 @@
 const STORAGE_KEY = 'task' // Main task storage key
 const idCounter = 'cbIdCounter' // Saving checkbox id counter to storage
 
-
 // Static attributes for input
 const checkboxInput = 'checkbox'; // Set list item as checkbox
 const cbClass = 'listItem-checkbox'; 
@@ -12,12 +11,15 @@ const liClass = 'listItem';
 const inputField = document.querySelector('#newEntry');
 const ul = document.querySelector('#taskList-cont');
 const form = document.querySelector('.taskSubmit');
-const errorMsg = document.querySelector('#error')
 
 // Buttons
 const addbtn = document.querySelector('addbtn');
 const delBtn = document.querySelector("#delBtn");
 const clearBtn = document.querySelector('#clearBtn');
+
+/* 
+Main
+localstorage */
 
 //Load localstorage items
 const loadFromStorage = () => {
@@ -30,22 +32,28 @@ const saveToStorage = (taskData) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(taskData));
 }
 
-const incrementId = () => {
+
+// ID for checkbox elements
+const getId = () => {
     // Getting id number from localstorage, set to 1 if empty
     const idNumber = parseInt(localStorage.getItem(idCounter) || '1', 10); // Parsing string from localstorage as int
-    let id = `task${idNumber}`; // ID template with incrememnting number
+    let id = `task${idNumber}`; // ID template with incrementing number
     localStorage.setItem(idCounter, String(idNumber + 1)) // Save id counter key and increment value in localstorage
     return id;
 }
 
+/* 
+Rendering
+tasks */
 
+// Creates the ul li elements from given localstorage data
 let renderTasks = () => {
     ul.innerHTML = '';
     let taskData = loadFromStorage(); // Checkbox id and label text from localstorage
+
     for (let i = 0; i < taskData.length; i++) {
-        // Create checkbox element
         let checkboxElem = document.createElement('input');
-        checkboxElem.type = checkboxInput; // 
+        checkboxElem.type = checkboxInput;
         checkboxElem.className = cbClass; // Checkbox class for easier styling
         checkboxElem.id = taskData[i].id; // Set input element id
 
@@ -63,7 +71,24 @@ let renderTasks = () => {
     }
 }
 
-// Removing tasks from the list
+// Submitting tasks as a function for reuse purposes
+let taskSubmit = () => {
+    
+    const label = inputField.value;
+    const id = getId() // Getting checkbox id value from a simple counter
+
+    const tasks = loadFromStorage(); // Get task data array from localstorage
+    
+    tasks.push({id, label}); // Populate the array with new data
+    saveToStorage(tasks); // Updated array to localstorage
+    renderTasks(); 
+
+    form.reset(); 
+}
+
+/* 
+Removing tasks 
+from the list */ 
 
 // Removing selected task list elements
 const delSelected = () => {
@@ -71,7 +96,7 @@ const delSelected = () => {
     
     const selected = Array.from(document.querySelectorAll('.listItem-checkbox:checked'), checkbox => checkbox.id); // Find checked checkbox id values
     
-    // Add the collected ids to a set
+    // Create a set and add collected ids
     toRemove = new Set(selected); 
 
     remaining = taskData.filter(obj => !toRemove.has(obj.id)); // Filter objects from localstorage array using their id
@@ -81,28 +106,8 @@ const delSelected = () => {
 
 // Clear the entire list
 const clearList = () => {
-    let liItems = document.querySelectorAll('.listItem');
-    taskArray = loadFromStorage();
-    liItems.forEach((elem) => {
-        elem.remove();
-    })
-    localStorage.clear();
-    taskArray = [];
-}
-
-// Submitting tasks as a function for reuse purposes
-let taskSubmit = () => {
-    
-    const label = inputField.value;
-    const id = incrementId() // Getting checkbox id value from a simple counter
-
-    const tasks = loadFromStorage(); // Get task data array from localstorage
-    
-    tasks.push({id, label}); // Populate the array with new data
-    saveToStorage(tasks); // Updated array to localstorage
-    renderTasks(); 
-
-    form.reset(); 
+   localStorage.clear();
+   renderTasks();
 }
 
 const inputValidation = () => {
@@ -120,13 +125,23 @@ const inputValidation = () => {
     return true; // Form submission allowed
 }; 
 
-// Listeners
+/* 
+Event
+Listeners */
+
+inputField.addEventListener('input', () => {
+    inputField.setCustomValidity('');
+    inputField.style.border = '';
+})
+
 
 // Event listener for the submit button
 form.addEventListener('submit', e => {
     if (!inputValidation()) {
         e.preventDefault(); // Prevent form submission if invalid
+        inputField.focus();
     } else {
+        e.preventDefault();
         taskSubmit(); 
     }
 });

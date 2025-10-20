@@ -95,18 +95,6 @@ body {
     transform: translateX(1.5px)
 }
 
-.storageBtn {
-    width: 182px;
-    align-self: center;
-    font-size: 15px;
-    border-radius: 0px 0px var(--storageButtonCornerRadius) var(--storageButtonCornerRadius);
-    border-top: 0px none;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-    border-right: 1px solid;
-    background-color: blueviolet;
-}
-
 /* Task list styles */
 
 .tasks {
@@ -114,9 +102,18 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    
+    margin-top: 25px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.storageBtn {
+    width: 182px;
+    align-self: center;
+    font-size: 15px;
+    border-radius: var(--storageButtonCornerRadius);
+    border: 1px solid;
+    background-color: rgb(143, 118, 167);
 }
 
 .scroll {
