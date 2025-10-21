@@ -48,7 +48,7 @@ tasks */
 
 // Creates the ul li elements from given localstorage data
 let renderTasks = () => {
-    ul.innerHTML = '';
+    ul.innerHTML = ''; // Erase existing list
     let taskData = loadFromStorage(); // Checkbox id and label text from localstorage
 
     for (let i = 0; i < taskData.length; i++) {
@@ -107,7 +107,7 @@ const delSelected = () => {
 // Clear the entire list
 const clearList = () => {
    localStorage.clear();
-   renderTasks();
+   renderTasks(); // Clears html elements without creating any new ones
 }
 
 const inputValidation = () => {
