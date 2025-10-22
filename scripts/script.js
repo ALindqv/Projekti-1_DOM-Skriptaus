@@ -44,7 +44,7 @@ const getId = () => {
 
 /* 
 Rendering
-tasks */
+elements */
 
 // Creates the ul li elements from given localstorage data
 let renderTasks = () => {
@@ -145,7 +145,7 @@ form.addEventListener('submit', e => {
         taskSubmit(); 
     }
 });
-    
+    /*
 // Submitting items with the enter key
 form.addEventListener('keydown', e => {
     if (e.key === "Enter") {
@@ -156,7 +156,7 @@ form.addEventListener('keydown', e => {
             taskSubmit();
         }
     }
-});
+}); */
 
 delBtn.addEventListener("click",delSelected); // Deletion
 clearBtn.addEventListener("click",clearList); // Clear list
