@@ -3,7 +3,7 @@
 Projekti on To-Do-Tehtävälista nimeltään FlowTracker. Tekijä on Arttu Lindqvist.
 
 ## Verkkolinkit:
-Pääset julkaistuun sovellukseen käsiksi osoitteessa [google.com](https://google.com)
+Pääset julkaistuun sovellukseen käsiksi osoitteessa [netlify.app](https://flowtracker-project.netlify.app/)
 
 Linkki projektin videoesittelyyn [video.laurea.fi](https://video.laurea.fi/media/Projekti+1+esittelyvideo/0_viq0z695)
 
