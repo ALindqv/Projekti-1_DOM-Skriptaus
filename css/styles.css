@@ -108,7 +108,7 @@ body {
     overflow-x: hidden;
 }
 
-.storageBtn {
+.deleteBtn {
     width: 182px;
     align-self: center;
     font-size: 15px;
@@ -116,7 +116,7 @@ body {
     border: 1px solid;
     background-color: rgb(143, 118, 167);
 }
-.storageBtn:active {
+.deleteBtn:active {
     transform: scaleY(0.9);
 }
 

@@ -145,18 +145,6 @@ form.addEventListener('submit', e => {
         taskSubmit(); 
     }
 });
-    /*
-// Submitting items with the enter key
-form.addEventListener('keydown', e => {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        if (!inputValidation()) {
-            e.preventDefault()
-        } else {
-            taskSubmit();
-        }
-    }
-}); */
 
 delBtn.addEventListener("click",delSelected); // Deletion
 clearBtn.addEventListener("click",clearList); // Clear list
