@@ -4,7 +4,8 @@ Projekti on To-Do-Tehtävälista nimeltään FlowTracker. Tekijä on Arttu Lindq
 
 ## Verkkolinkit:
 Pääset julkaistuun sovellukseen käsiksi osoitteessa [google.com](https://google.com)
-Linkki projektin videoesittelyyn [google.com](https://google.com)
+
+Linkki projektin videoesittelyyn [video.laurea.fi](https://video.laurea.fi/media/Projekti+1+esittelyvideo/0_viq0z695)
 
 ## Työn jakautuminen 
 Projektin tehnyt täysin Arttu Lindqvist. Työn tekeminen tapahtui lähes aina kun minulla oli vapaa-aikaa. Kokonaisaika projektille oli noin 70 tuntia.
@@ -12,7 +13,7 @@ Projektin tehnyt täysin Arttu Lindqvist. Työn tekeminen tapahtui lähes aina k
 ## Oma arvio työstä ja oman osaamisen kehittymisestä
 Mielestäni onnistuin käyttämään JavaScriptin ja CSS:n ominaisuuksia monipuolisesti ja sain toteutettua kaikki pakolliset vaatimukset.
 
-Parantamista olisi ohjelman suunnittelussa. Jouduin tekemään turhan paljon muutoksia koodiin, koska en aluksi suunnitellut sovellusta kaikille sen ominaisuuksille.
+Parantamista olisi projektin suunnittelussa. Jouduin tekemään turhan paljon muutoksia koodiin, koska en aluksi suunnitellut sovellusta kaikille sen ominaisuuksille.
 
 Sovelluksesta jäi puuttumaan valintalaatikoiden tilan tallentaminen localstorageen ajan puutteen takia. Ominaisuus olisi hyvä kehitysidea, koska sitten käyttäjän ei tarvitse merkitä tehtäviä tehdyksi uudelleen. 
 
@@ -23,7 +24,7 @@ Epäselväksi jäi...
 Antaisin itselleni pisteitä seuraavasti: xx/yy p
 
 ## Palaute opettajalle kurssista sekä itse opetuksesta tähän saakka
-Kurssi sekä lähiopetus ovat tuntuneet... 
+Kurssi sekä lähiopetus ovat tuntuneet sopivilta oppimistavoitteeni saavuttamiseen.  
 Oppimistani tukisi jos...
 
 
@@ -43,6 +44,10 @@ FlowTracker on sovellus, jossa käyttäjä voi luoda tehtävälistan. Listalta v
 
 ## Tunnetut virheet/bugit
 Kerro jos tiedät sovelluksessa olevan jotain, mikä ei toimi tai toimii heikosti
+
+- Sovelluksessa ei toiminut tiettyjen html-elementtien piilottaminen (esimerkiksi poistonapin piilottaminen listan ollessa tyhjä)
+
+- Localstorage-toteutus ei mahdollista tehtyjen tehtävien tallentamista ja käyttäjän täytyy merkitä tehtävä tehdyksi uudelleen, jos sivu ladataan uudelleen. 
 
 ## Kuvakaappaukset
 Sovellus toiminnassa 
