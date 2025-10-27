@@ -19,13 +19,13 @@ Sovelluksesta jäi puuttumaan valintalaatikoiden tilan tallentaminen localstorag
 
 Koen, että olen oppinut käyttämään JavaScriptiä paremmin ja ymmärrän paremmin. Sain myös harjoitusta muuttujien ja funktioiden selkeään nimeämiseen, että koodiin ei tarvitse laittaa liian paljon kommentteja. Projektista oli minulle hyötyä tulevissa kurssin tehtävissä ja omien projektien työstämiseen.
 
-Epäselväksi jäi...
+Epäselväksi ei erityisesti jäänyt mikään. Ymmärsin sovelluksessa käyttämäni toiminnot ja miten sovelluksen toimintaa voisi laajentaa. 
 
-Antaisin itselleni pisteitä seuraavasti: xx/yy p
+Antaisin itselleni pisteitä seuraavasti: 9/10 p
 
 ## Palaute opettajalle kurssista sekä itse opetuksesta tähän saakka
 Kurssi sekä lähiopetus ovat tuntuneet sopivilta oppimistavoitteeni saavuttamiseen.  
-Oppimistani tukisi jos...
+Mahdollisuus käydä lähitapaamisissa tarvittaessa tehostaa oppimistani sopivasti.
 
 
 ## Sisällysluettelo:
@@ -75,6 +75,6 @@ Muita lähteitä:
 - [W3Schools](https://www.w3schools.com)  
 
 ## Lisenssi
-Valitse projektille lisenssi seuraamalla tätä [opasta](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository).
+MIT License
 
-Esimerkki: MIT-lisenssi @ [tekijä](author.com)
+Copyright (c) 2025 Arttu Lindqvist
